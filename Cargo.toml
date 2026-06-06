@@ -3,6 +3,10 @@ name = "caffeinate-windows"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "caffeinate"
+path = "src/main.rs"
+
 [dependencies]
 ctrlc = "3.5.2"
 windows = { version = "0.62.2", features = ["Win32_System_Power"] }
