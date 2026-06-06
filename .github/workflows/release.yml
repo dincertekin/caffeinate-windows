@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     runs-on: windows-latest
@@ -20,7 +23,7 @@ jobs:
         run: cargo build --release
 
       - name: Rename binary
-        run: copy target\release\caffeinate.exe caffeinate.exe
+        run: copy target\release\caffeinate-windows.exe caffeinate.exe
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
