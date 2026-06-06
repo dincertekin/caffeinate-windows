@@ -45,7 +45,31 @@ Flags can be combined. `-t` and `-i` are mutually exclusive.
 
 - [Rust](https://rustup.rs/) installed
 
-### Option A: `cargo install` (recommended)
+### Option A: System32 (quickest, no PATH setup needed)
+
+System32 is already on PATH everywhere, so this just works:
+
+```sh
+cargo build --release
+copy target\release\caffeinate.exe C:\Windows\System32\caffeinate.exe
+```
+
+Open a new terminal and you're done. This is what I do personally.
+
+### Option B: your own tools folder
+
+If you'd rather not touch System32, make a folder for personal CLI tools and add it to PATH once:
+
+```sh
+mkdir C:\tools
+cargo build --release
+copy target\release\caffeinate.exe C:\tools\caffeinate.exe
+setx PATH "%PATH%;C:\tools"
+```
+
+Restart your terminal after `setx` for the PATH change to kick in.
+
+### Option C: `cargo install`
 
 ```sh
 git clone https://github.com/dincertekin/caffeinate-windows.git
@@ -54,20 +78,6 @@ cargo install --path .
 ```
 
 Cargo drops `caffeinate.exe` into `~/.cargo/bin`, which is already on your PATH after installing Rust.
-
-### Option B: manual
-
-```sh
-cargo build --release
-copy target\release\caffeinate.exe C:\tools\caffeinate.exe
-```
-
-Add `C:\tools` to your PATH if it isn't already:
-```sh
-setx PATH "%PATH%;C:\tools"
-```
-
-Restart your terminal after `setx`.
 
 ## How it works
 
