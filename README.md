@@ -1,4 +1,4 @@
-# caffeinate-windows
+# Caffeinate Windows
 
 I got too used to running `caffeinate -d` on my Mac to keep my laptop awake during long tasks. When I switched to Windows, I missed it enough to just build it myself.
 
