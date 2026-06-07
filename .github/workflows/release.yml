@@ -22,11 +22,8 @@ jobs:
       - name: Build release binary
         run: cargo build --release
 
-      - name: Rename binary
-        run: copy target\release\caffeinate-windows.exe caffeinate.exe
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: caffeinate.exe
+          files: target\release\caffeinate.exe
           generate_release_notes: true
