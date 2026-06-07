@@ -96,4 +96,4 @@ On Ctrl+C or natural exit, the state is cleared so Windows immediately goes back
 
 ## License
 
-MIT
+[MIT License](./LICENSE)
