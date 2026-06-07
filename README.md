@@ -30,7 +30,7 @@ caffeinate -d -i docker build .
 
 Flags can be combined. `-t` and `-i` are mutually exclusive.
 
-### Flag cheat sheet
+### Flags
 
 | Flag | What it does |
 |------|--------------|
@@ -56,7 +56,7 @@ copy target\release\caffeinate.exe C:\Windows\System32\caffeinate.exe
 
 Open a new terminal and you're done. This is what I do personally.
 
-### Option B: your own tools folder
+### Option B: your own folder
 
 If you'd rather not touch System32, make a folder for personal CLI tools and add it to PATH once:
 
@@ -79,7 +79,7 @@ cargo install --path .
 
 Cargo drops `caffeinate.exe` into `~/.cargo/bin`, which is already on your PATH after installing Rust.
 
-## How it works
+## How It Works
 
 Windows exposes a `SetThreadExecutionState` API that lets a process tell the OS to stay awake. Two relevant flags:
 
