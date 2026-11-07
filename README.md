@@ -1,4 +1,16 @@
-# Caffeinate Windows
+# caffeinate for Windows
+
+[![release](https://img.shields.io/github/v/release/dincertekin/caffeinate-windows?color=111827)](https://github.com/dincertekin/caffeinate-windows/releases/latest)
+[![license: MIT](https://img.shields.io/badge/license-MIT-111827)](LICENSE)
+![Windows](https://img.shields.io/badge/Windows%2010%20·%2011-111827?logo=windows)
+![Built with Rust](https://img.shields.io/badge/built%20with-Rust-111827?logo=rust)
+
+**macOS's `caffeinate`, on Windows.** Keep your PC and display awake from the
+terminal, for as long as a command runs, or for a set time.
+
+```sh
+caffeinate -d -i npm run build   # screen stays on until the build finishes
+```
 
 I got too used to running `caffeinate -d` on my Mac to keep my laptop awake during long tasks. When I switched to Windows, I missed it enough to just build it myself.
 
@@ -41,47 +53,37 @@ Flags can be combined. `-t` and `-i` are mutually exclusive.
 
 ## Installation
 
-### Prerequisites
+### Download (no Rust needed)
 
-- [Rust](https://rustup.rs/) installed
+1. Download `caffeinate.exe` from the
+   [latest release](https://github.com/dincertekin/caffeinate-windows/releases/latest).
+2. Put it in a folder for your command-line tools, such as `C:\tools`, and add
+   that folder to your PATH once. In PowerShell:
 
-### Option A: System32 (quickest, no PATH setup needed)
+   ```powershell
+   mkdir C:\tools
+   move $HOME\Downloads\caffeinate.exe C:\tools\
+   [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\tools", "User")
+   ```
 
-System32 is already on PATH everywhere, so this just works:
+3. Open a new terminal and run `caffeinate`.
 
-```sh
-cargo build --release
-copy target\release\caffeinate.exe C:\Windows\System32\caffeinate.exe
-```
+The exe isn't code-signed, so SmartScreen may warn you the first time. Click
+**More info**, then **Run anyway**.
 
-Open a new terminal and you're done. This is what I do personally.
+### With Cargo
 
-### Option B: your own folder
-
-If you'd rather not touch System32, make a folder for personal CLI tools and add it to PATH once:
-
-```sh
-mkdir C:\tools
-cargo build --release
-copy target\release\caffeinate.exe C:\tools\caffeinate.exe
-setx PATH "%PATH%;C:\tools"
-```
-
-Restart your terminal after `setx` for the PATH change to kick in.
-
-### Option C: `cargo install`
+If you have [Rust](https://rustup.rs/) installed:
 
 ```sh
-git clone https://github.com/dincertekin/caffeinate-windows.git
-cd caffeinate-windows
-cargo install --path .
+cargo install --git https://github.com/dincertekin/caffeinate-windows
 ```
 
-Cargo drops `caffeinate.exe` into `~/.cargo/bin`, which is already on your PATH after installing Rust.
+Cargo puts `caffeinate.exe` in `~/.cargo/bin`, which is already on your PATH.
 
 ## How It Works
 
-Windows exposes a `SetThreadExecutionState` API that lets a process tell the OS to stay awake. Two relevant flags:
+Windows exposes a `SetThreadExecutionState` API that lets a process tell the OS to stay awake. Three flags matter:
 
 - `ES_SYSTEM_REQUIRED` prevents idle sleep
 - `ES_DISPLAY_REQUIRED` also prevents the display from turning off (what `-d` adds)
