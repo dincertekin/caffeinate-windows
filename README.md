@@ -1,11 +1,9 @@
 # caffeinate for Windows
 
-<p>
-  <a href="https://github.com/dincertekin/caffeinate-windows/releases/latest"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/download-dark.svg"><img src="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/download-light.svg" alt="Download the latest release" height="28"></picture></a>
-  <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/windows-dark.svg"><img src="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/windows-light.svg" alt="Windows 10 and 11" height="28"></picture>
-  <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/rust-dark.svg"><img src="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/rust-light.svg" alt="Rust" height="28"></picture>
-  <a href="LICENSE"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/mit-dark.svg"><img src="https://raw.githubusercontent.com/dincertekin/dincertekin/main/assets/badges/mit-light.svg" alt="MIT license" height="28"></picture></a>
-</p>
+[![release](https://img.shields.io/github/v/release/dincertekin/caffeinate-windows?color=111827)](https://github.com/dincertekin/caffeinate-windows/releases/latest)
+[![license: MIT](https://img.shields.io/badge/license-MIT-111827)](LICENSE)
+![Windows](https://img.shields.io/badge/Windows%2010%20·%2011-111827?logo=windows)
+![Built with Rust](https://img.shields.io/badge/built%20with-Rust-111827?logo=rust)
 
 **macOS's `caffeinate`, on Windows.** Keep your PC and display awake from the
 terminal, for as long as a command runs, or for a set time.
